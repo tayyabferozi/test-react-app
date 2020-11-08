@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { useDispatch } from "react-redux";
+
+import Routes from "./Routes";
+import { authCheckState } from "./store/actions/authActions";
+
+axios.defaults.baseURL = "https://ticketingapi.webnapp.com.au/api/company/";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const dispatch = useDispatch();
+  dispatch(authCheckState());
+
+  return <Routes />;
 }
 
 export default App;
